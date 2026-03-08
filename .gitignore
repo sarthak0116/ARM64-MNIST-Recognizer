@@ -1,0 +1,4 @@
+test
+*.o
+data/test_digit.bin
+__pycache__/
