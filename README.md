@@ -15,23 +15,9 @@ Draw a digit in the GUI and the model predicts the number in real time.
 ![demo](img/demo.gif)
 
 ---
-
 # System Architecture
+[![](https://mermaid.ink/img/pako:eNqtVN1umzAYfRXLU6VWowxIAsQXk9LQTb1IG5H0YiNT5IBJrIKNbLM2_XmOPdBebDaQjG3aNE3zBbLP933Hn4-PeYIpzwhEcCtwtQPLaMWAHicn4FrjICI5ZVRRzmQbmH9I5nu14wy8v71CIBP4fo1Ztq4EyWiq7Gr_qUuML0-98OsXLwRzQSrBUyIlZduzNnxxdZ1kWOE3iki1zuiWKntDWVc8jZfJFMQ1U7QkCDQ5lOVEEJYSO-2y2q-sN23vk8UMJJN45g_BREpSboo9AoKkfMvoIxG27MrMiOIkI0yStSBF3ccXHS55rkr80AtNZgkW2-8YYdmKtdOb22UybwXQSoGbWlW16tLiy8VpZI4HXmsh-AZvaKEFJfLsUK21flfw-4O-4Pz87fPyjjJFBJhi9hnLZ6PmUdYm4YIyLPbgiumdno2aR1lN2Ah4VLIBtDgtYFQygO752HwD6EZ7HS3UvtC3BU6nvOBCdreWFlhK7QlQtR7IaVGgV4Mg8CcXllSC3xH0Ks_zbn5-TzO1Q171YKWGpon9xGRM0PHkg3Hqer_ncf_Ek4rWLR2X44zG4-k_cuHOPv_jfLwxQ8fkBZj4zt931eMyzmhV_wHUdvgVNS4wuvYxY4SDRn1c-8GKYitaWJPZ8eD9BO0PS3ujOwi09J-CZhApURMLlkSU2Czhk6lZQbUjmh8iPc2wuFvBFXvRNRVmHzkvD2WC19sdRDkupF7VlW6WRBTrd1weUf3WMyKmXLcM0XDkNiQQPcEHiLzAtX3fdbxB6I-Hg0AH9xAFvh36bjD2Qmc4CjzHe7HgY7OrY4cmdRiMQscd-sHYffkGab2UhQ?type=png)](https://mermaid.live/edit#pako:eNqtVN1umzAYfRXLU6VWowxIAsQXk9LQTb1IG5H0YiNT5IBJrIKNbLM2_XmOPdBebDaQjG3aNE3zBbLP933Hn4-PeYIpzwhEcCtwtQPLaMWAHicn4FrjICI5ZVRRzmQbmH9I5nu14wy8v71CIBP4fo1Ztq4EyWiq7Gr_qUuML0-98OsXLwRzQSrBUyIlZduzNnxxdZ1kWOE3iki1zuiWKntDWVc8jZfJFMQ1U7QkCDQ5lOVEEJYSO-2y2q-sN23vk8UMJJN45g_BREpSboo9AoKkfMvoIxG27MrMiOIkI0yStSBF3ccXHS55rkr80AtNZgkW2-8YYdmKtdOb22UybwXQSoGbWlW16tLiy8VpZI4HXmsh-AZvaKEFJfLsUK21flfw-4O-4Pz87fPyjjJFBJhi9hnLZ6PmUdYm4YIyLPbgiumdno2aR1lN2Ah4VLIBtDgtYFQygO752HwD6EZ7HS3UvtC3BU6nvOBCdreWFlhK7QlQtR7IaVGgV4Mg8CcXllSC3xH0Ks_zbn5-TzO1Q171YKWGpon9xGRM0PHkg3Hqer_ncf_Ek4rWLR2X44zG4-k_cuHOPv_jfLwxQ8fkBZj4zt931eMyzmhV_wHUdvgVNS4wuvYxY4SDRn1c-8GKYitaWJPZ8eD9BO0PS3ujOwi09J-CZhApURMLlkSU2Czhk6lZQbUjmh8iPc2wuFvBFXvRNRVmHzkvD2WC19sdRDkupF7VlW6WRBTrd1weUf3WMyKmXLcM0XDkNiQQPcEHiLzAtX3fdbxB6I-Hg0AH9xAFvh36bjD2Qmc4CjzHe7HgY7OrY4cmdRiMQscd-sHYffkGab2UhQ)
 
-## 🏗️ System Architecture
-
-Python GUI (`draw_and_predict.py`) (Tkinter Canvas)  
-&nbsp;&nbsp;&nbsp;⬇ 28×28 preprocessing  
-Binary Input File (`data/test_digit.bin`)  
-&nbsp;&nbsp;&nbsp;⬇  
-C Runtime (`test_inference.c`)  
-&nbsp;&nbsp;&nbsp;⬇ calls  
-ARM64 Assembly (`recognizer.s`)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• dense_relu  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• dense_softmax  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• argmax  
-&nbsp;&nbsp;&nbsp;⬇  
-Prediction Output → Digit + Probabilities
 ---
 
 # Neural Network Architecture
@@ -65,9 +51,12 @@ Digit Prediction
 
 
 #  Pipeline: Digit Prediction Flow
-**Step-by-step flow of a digit prediction:**
 
-## **1) Draw a Digit **
+<details>
+<summary><b>Click to expand: Full Step-by-Step Flow</b></summary>
+
+
+## 1) Draw a Digit 
 User draws a digit in the **Python GUI (Tkinter Canvas)**.
 
 
@@ -98,6 +87,10 @@ The C runtime calls **ARM64 assembly kernels** to compute the forward pass.
 
 ## **7) Output Prediction**
 The predicted digit and its **probabilities** are returned to the GUI.
+
+
+</details>
+
 
 # Running
 
